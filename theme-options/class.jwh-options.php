@@ -579,15 +579,15 @@ class My_Theme_Options {
 	public function scripts() {
 		
 		wp_print_scripts( 'jquery-ui-tabs' );
-		wp_enqueue_script('jscolor.js', get_bloginfo( 'stylesheet_directory' ) . '/js/jscolor.js');	//color picker for '#' value fields
-		wp_enqueue_script('jquery.datePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.datePicker.js');	//date picker. duh.
-		wp_enqueue_script('myDatePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/js/myDatePicker.js');	//date picker. duh.
-		wp_enqueue_script('date.js', get_bloginfo( 'stylesheet_directory' ) . '/js/date.js');	//date picker. duh.
+		wp_enqueue_script('jscolor.js', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/js/jscolor.js');	//color picker for '#' value fields
+		wp_enqueue_script('jquery.datePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/js/jquery.datePicker.js');	//date picker. duh.
+		wp_enqueue_script('myDatePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/js/myDatePicker.js');	//date picker. duh.
+		wp_enqueue_script('date.js', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/js/date.js');	//date picker. duh.
 		
 		//Media Uploader scripts
 		wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
-		wp_register_script('my-upload', get_bloginfo( 'stylesheet_directory' ) . '/js/uploader.js', array('jquery','media-upload','thickbox'));
+		wp_register_script('my-upload', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/js/uploader.js', array('jquery','media-upload','thickbox'));
 		wp_enqueue_script('my-upload');
 	}
 	
@@ -598,8 +598,8 @@ class My_Theme_Options {
 	*/
 	public function styles() {
 		
-		wp_register_style( 'mytheme-admin', get_bloginfo( 'stylesheet_directory' ) . '/css/mytheme-options.css' );
-		wp_register_style( 'mytheme-datepicker', get_bloginfo( 'stylesheet_directory' ) . '/css/datePicker.css' );
+		wp_register_style( 'mytheme-admin', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/css/jwh-theme-options.css' );
+		wp_register_style( 'mytheme-datepicker', get_bloginfo( 'stylesheet_directory' ) . '/theme-options/css/datePicker.css' );
 		wp_enqueue_style( 'mytheme-admin' );
 		wp_enqueue_style( 'mytheme-datepicker' );
 		wp_enqueue_style('thickbox');
