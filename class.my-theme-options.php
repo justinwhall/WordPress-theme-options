@@ -3,7 +3,7 @@
 /**
  * Master theme class
  * 
- * @package
+ * @package Bolts
  * @since 1.0
  */
 class My_Theme_Options {
@@ -210,7 +210,10 @@ class My_Theme_Options {
 		<table>
 	        <tbody>
 	                <tr>
-	                        <td>About...</td>
+	                        <td>SlidingTiles was developed by <a href="http://justinwhall.com" target="_blank" >Justin W Hall</a></td>
+	                </tr>
+	                <tr>
+	                        <td>You can find a FAQ and further documentation on the <a href="#" target="" >Sliding Tiles Wordpress Theme Documentation</a> page.</td>
 	                </tr>
 	        </tbody>
 	</table>');
@@ -303,6 +306,15 @@ class My_Theme_Options {
 		 		
 		 		break;
 
+			case 'date':
+			default:
+		 		echo '<input class="date-pick' . $field_class . '" type="text" id="' . $id . '" name="mytheme_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
+		 		
+		 		if ( $desc != '' )
+		 			echo '<span class="description">' . $desc . '</span>';
+		 		
+		 		break;
+
 			case 'upload':
 			default:
 		 		echo '<input class="upload-url' . $field_class . '" type="text" id="' . $id . '" name="mytheme_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
@@ -327,6 +339,14 @@ class My_Theme_Options {
 		/* General Settings
 		===========================================*/
 		
+		$this->settings['date1'] = array(
+			'title'   => __( 'Example DatePicker Input' ),
+			'desc'    => __( 'This is a description for the date picker.' ),
+			'std'     => 'My date picker',
+			'type'    => 'date',
+			'section' => 'general'
+		);
+
 		$this->settings['st_upload'] = array(
 			'title'   => __( 'Example Upload Input' ),
 			'desc'    => __( 'This is a description for the upload input.' ),
@@ -334,6 +354,7 @@ class My_Theme_Options {
 			'type'    => 'upload',
 			'section' => 'general'
 		);
+
 		
 		$this->settings['st_upload2'] = array(
 			'title'   => __( 'Example Text Input' ),
@@ -559,6 +580,9 @@ class My_Theme_Options {
 		
 		wp_print_scripts( 'jquery-ui-tabs' );
 		wp_enqueue_script('jscolor.js', get_bloginfo( 'stylesheet_directory' ) . '/js/jscolor.js');	//color picker for '#' value fields
+		wp_enqueue_script('jquery.datePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.datePicker.js');	//date picker. duh.
+		wp_enqueue_script('myDatePicker.js', get_bloginfo( 'stylesheet_directory' ) . '/js/myDatePicker.js');	//date picker. duh.
+		wp_enqueue_script('date.js', get_bloginfo( 'stylesheet_directory' ) . '/js/date.js');	//date picker. duh.
 		
 		//Media Uploader scripts
 		wp_enqueue_script('media-upload');
@@ -574,8 +598,10 @@ class My_Theme_Options {
 	*/
 	public function styles() {
 		
-		wp_register_style( 'mytheme-admin', get_bloginfo( 'stylesheet_directory' ) . '/mytheme-options.css' );
+		wp_register_style( 'mytheme-admin', get_bloginfo( 'stylesheet_directory' ) . '/css/mytheme-options.css' );
+		wp_register_style( 'mytheme-datepicker', get_bloginfo( 'stylesheet_directory' ) . '/css/datePicker.css' );
 		wp_enqueue_style( 'mytheme-admin' );
+		wp_enqueue_style( 'mytheme-datepicker' );
 		wp_enqueue_style('thickbox');
 		
 	}
